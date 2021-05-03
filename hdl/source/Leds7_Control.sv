@@ -1,5 +1,5 @@
 // модуля управления семисегментными индикаторами
-//`define TEST
+`define TEST
 
 module Leds7_Control (
 	input logic clk,    

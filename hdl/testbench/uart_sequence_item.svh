@@ -36,6 +36,7 @@ endclass
 
 function uart_sequence_item::new(string name = "uart_sequence_item");
     super.new(name);
+	transaction_cg = new();
 endfunction
 
 function bit uart_sequence_item::do_compare(uvm_object rhs, uvm_comparer comparer);

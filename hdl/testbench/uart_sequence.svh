@@ -13,7 +13,7 @@ class uart_sequence extends uvm_sequence #(uart_sequence_item);
     extern function new(string name = "uart_sequence");
     extern task body();
 
-    int transactions_number = 5;
+    int transactions_number = 500;
 
     uart_sequence_item uart_sequence_item_inst;
 endclass
@@ -29,7 +29,8 @@ task uart_sequence::body();
         start_item(uart_sequence_item_inst);
         
         assert(uart_sequence_item_inst.randomize());
-        
+        uart_sequence_item_inst.transaction_cg.sample();
+
         finish_item(uart_sequence_item_inst);
     end
 endtask
