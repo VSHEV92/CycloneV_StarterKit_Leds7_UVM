@@ -13,14 +13,20 @@ module top_tb();
 	
 	logic clk = 0;
  	
+	logic [6:0] leds_data[4];
+	logic led_data_valid[4];
+
+
 	// интерфейсы
+	Leds_intf leds();
+	reset_intf resetn();
+
 	UART_intf
 	#(
 		.BIT_RATE(BIT_RATE)
 	) uart_rx ();
 	
-	Leds_intf leds();
-	reset_intf resetn();
+
 
 	// тестируемый модуль
 	device_top
@@ -30,7 +36,7 @@ module top_tb();
 	)
 	DUT 
 	(
-		.*, 
+		.*,
 		.resetn(resetn.resetn)
 	);
 

@@ -13,7 +13,7 @@ class uart_sequence extends uvm_sequence #(uart_sequence_item);
     extern function new(string name = "uart_sequence");
     extern task body();
 
-    int transactions_number = 100;
+    int transactions_number = 5;
 
     uart_sequence_item uart_sequence_item_inst;
 endclass

@@ -34,6 +34,7 @@ uart_inst
     .aresetn(debounced_resetn[2]),
     .tdata(uart_data),
 	.tvalid(uart_data_valid),
+    .tuser(),
     .RX(uart_rx.RX)    
 );
 

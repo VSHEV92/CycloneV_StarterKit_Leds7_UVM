@@ -3,7 +3,7 @@
 
 `include "uart_sequence_item.svh"
 `uvm_analysis_imp_decl(_uart)
-//`uvm_analysis_imp_decl(_out)
+`uvm_analysis_imp_decl(_led7)
 
 class scoreboard extends uvm_scoreboard;
     `uvm_component_utils(scoreboard)
@@ -11,6 +11,7 @@ class scoreboard extends uvm_scoreboard;
     extern function new(string name, uvm_component parent);
     extern function void build_phase(uvm_phase phase);
     extern virtual function void write_uart(uart_sequence_item uart_sequence_item_inst);
+    extern virtual function void write_led7(uart_sequence_item uart_sequence_item_inst);
     // extern virtual function void write_out(seq_item seq_item_inst);
     // extern function void processing();
     // extern function bit[8:0] get_ideal_sum(bit[7:0] a, bit[7:0] b);
@@ -19,8 +20,8 @@ class scoreboard extends uvm_scoreboard;
     // seq_item seq_item_queue_out[$];
 
     uvm_analysis_imp_uart #(uart_sequence_item, scoreboard) analysis_port_uart;
-    //uvm_analysis_imp_out #(seq_item, scoreboard) analysis_port_out;
-
+    uvm_analysis_imp_led7 #(uart_sequence_item, scoreboard) analysis_port_led7;
+    
 endclass
 
 function scoreboard::new(string name, uvm_component parent);
@@ -29,12 +30,17 @@ endfunction
 
 function void scoreboard::build_phase(uvm_phase phase);
     analysis_port_uart = new("analysis_port_uart", this);
-    //analysis_port_out = new("analysis_port_out", this);
+    analysis_port_led7 = new("analysis_port_led7", this);
 endfunction
 
 function void scoreboard::write_uart(uart_sequence_item uart_sequence_item_inst);
     //seq_item_queue_in.push_back(uart_sequence_item);
-    `uvm_info("", uart_sequence_item_inst.convert2string(), UVM_LOW)
+    `uvm_info("UART", uart_sequence_item_inst.convert2string(), UVM_LOW)
+endfunction
+
+function void scoreboard::write_led7(uart_sequence_item uart_sequence_item_inst);
+    //seq_item_queue_in.push_back(uart_sequence_item);
+    `uvm_info("LED7", uart_sequence_item_inst.convert2string(), UVM_LOW)
 endfunction
 
 // function void scoreboard::write_out(seq_item seq_item_inst);

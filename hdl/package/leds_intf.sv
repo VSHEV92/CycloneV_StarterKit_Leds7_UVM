@@ -1,5 +1,4 @@
-// UART-интерфейс
-interface Leds_intf;
+interface Leds_intf();
 
 	logic [6:0] leds_data[4];
 	logic led_data_valid[4];
