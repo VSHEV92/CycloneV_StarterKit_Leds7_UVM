@@ -4,7 +4,9 @@
 !hdl
 !hdl/package
 !hdl/package/*.sv
+!hdl/package/*.svh
 !hdl/source
 !hdl/source/*.sv
 !hdl/testbench
 !hdl/testbench/*.sv
+!hdl/testbench/*.svh

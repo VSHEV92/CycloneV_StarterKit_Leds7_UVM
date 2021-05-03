@@ -2,7 +2,8 @@
 
 `include "uvm_macros.svh"
 import uvm_pkg::*;
-import Leds_7_test_pkg::*;
+
+`include "base_test.svh"
 
 module top_tb();
 
